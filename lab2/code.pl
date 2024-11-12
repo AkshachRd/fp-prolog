@@ -15,7 +15,7 @@ horiz(N) :-
     seg(N, point(X1, Y), point(X2, Y)),
     X1 =\= X2.
 
-horiz(N) :-
+vertical(N) :-
     seg(N, point(X, Y1), point(X, Y2)),
     Y1 =\= Y2.
 
