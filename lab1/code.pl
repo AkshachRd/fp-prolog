@@ -1,3 +1,4 @@
+% 0
 parent(bill, joe).
 parent(sue, joe).
 parent(bill, ann).
@@ -19,22 +20,26 @@ female(mary).
 female(ann).
 female(tammy).
 
-% b) Найти бабушку для bob.
-grandmother(X, Y) :- parent(X, Z), parent(Z, Y), female(X).
+% 1
+son(X) :- parent(Y, X), male(X).
 
-% c) Найти внука.
+% 2
+grandma(X, Y) :- parent(X, Z), parent(Z, Y), female(X).
+
+% 3
 grandson(X, Y) :- parent(Y, Z), parent(Z, X), male(X).
 
-% d) Найти сестру для jim.
+% 4
 different(X, Y) :- X \= Y.
-sister(X, Y) :- parent(P, X), parent(P, Y), female(X), different(X, Y), halt.
+sister(X, Y) :- parent(P, X), parent(P, Y), female(X), different(X, Y).
 
-% e) Определите отношение "тётя".
+% 5
 aunt(X, Y) :- parent(P, Y), sister(X, P).
 
-% f) Определите отношение "кузин".
+% 6.
 cousin(X, Y) :- parent(PX, X), parent(PY, Y), parent(P, PX), parent(P, PY), different(PX, PY).
 
+% 7
 likes(ellen, reading).
 likes(john, computers).
 likes(john, badminton).
@@ -47,12 +52,12 @@ likes(eric, chess).
 likes(eric, game).
 likes(paul, swimming).
 
-% b) Найти тех, кто имеет четыре хобби.
-has_four_hobbies(Person) :-
+% 8
+four_hobbies(Person) :-
     findall(Hobby, likes(Person, Hobby), Hobbies),
     length(Hobbies, 4).
 
-% c) Найти тех, у кого одинаковые хобби.
+% 9
 same_hobbies(Person1, Person2) :-
     likes(Person1, Hobby),
     likes(Person2, Hobby),
