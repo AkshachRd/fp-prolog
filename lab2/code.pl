@@ -21,23 +21,19 @@ vertical(N) :-
 
 cross(N, M, point(X, Y), NL, ML) :-
     horiz(N), vertical(M),
-    seg(N, point(HX1, HY), point(HX2, HY)),
-    seg(M, point(VX, VY1), point(VX, VY2)),
-    min(HX1, HX2) =< VX, VX =< max(HX1, HX2),
-    min(VY1, VY2) =< HY, HY =< max(VY1, VY2),
-    X = VX,
-    Y = HY,
+    seg(N, point(HX1, Y), point(HX2, Y)),
+    seg(M, point(X, VY1), point(X, VY2)),
+    min(HX1, HX2) =< X, X =< max(HX1, HX2),
+    min(VY1, VY2) =< Y, Y =< max(VY1, VY2),
     segment_length(NL, N),
     segment_length(ML, M).
 
 cross(N, M, point(X, Y), NL, ML) :-
     vertical(N), horiz(M),
-    seg(N, point(VX, VY1), point(VX, VY2)),
-    seg(M, point(HX1, HY), point(HX2, HY)),
-    min(VY1, VY2) =< HY, HY =< max(VY1, VY2),
-    min(HX1, HX2) =< VX, VX =< max(HX1, HX2),
-    X = VX,
-    Y = HY,
+    seg(N, point(X, VY1), point(X, VY2)),
+    seg(M, point(HX1, Y), point(HX2, Y)),
+    min(VY1, VY2) =< Y, Y =< max(VY1, VY2),
+    min(HX1, HX2) =< X, X =< max(HX1, HX2),
     segment_length(NL, N),
     segment_length(ML, M).
 
