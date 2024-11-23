@@ -30,16 +30,12 @@ split([X | Xs], Evens, Odds) :-
     ).
 
 repeat3(L1, L2) :-
-    swap_first_last(L1, SwappedL1),
-    SwappedL1 = [First | Middle],
-    last(SwappedL1, Last),
-    replicate(First, 3, FirstList),
-    replicate(Last, 3, LastList),
-    append([FirstList, Middle, LastList], L2).
-
-swap_first_last([First | Rest], [Last | NewRest]) :-
-    append(Middle, [Last], Rest),
-    append(Middle, [First], NewRest).
+    first_last(L1, SwappedL1),
+    SwappedL1 = [First | _],
+    L1 = [Last | _],
+    replicate(First, 2, FirstList),
+    replicate(Last, 2, LastList),
+    append([FirstList, SwappedL1, LastList], L2).
 
 replicate(_, 0, []).
 replicate(X, N, [X | Xs]) :-
