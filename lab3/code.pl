@@ -46,4 +46,4 @@ replicate(X, N, [X | Xs]) :-
 combi([X], _, [X]).
 combi([X1, X2 | Xs], [Y | Ys], [X1, Y | Zs]) :-
     combi([X2 | Xs], Ys, Zs).
-combi([X1, X2 | Xs], [], [X1, X2 | Xs]).
+combi([X1 | Xs], [], [X1 | Xs]).
